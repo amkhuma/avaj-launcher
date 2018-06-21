@@ -10,13 +10,15 @@ public class Simulation
 {
     public static void main(String args[])
     {
+        final WeatherTower weatherTower;
+	    List<Flyable> flyables = new ArrayList<Flyable>();
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
             String line = reader.readLine();
             if (line != null) 
             {
-                //weatherTower = new WeatherTower();
+                weatherTower = new WeatherTower();
                 int simulations = Integer.parseInt(line.split(" ")[0]);
                 System.out.println(simulations);
                 if (simulations < 0) 
@@ -26,20 +28,22 @@ public class Simulation
                 }
                 while ((line = reader.readLine()) != null) 
                 {
-                    System.out.println(line);
-                    /*Flyable flyable = AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
-                    //Integer.parseInt(line.split(" ")[2]), Integer.parseInt(line.split(" ")[3]),
-                    //Integer.parseInt(line.split(" ")[4]));
+                    //System.out.println(line);
+                    Flyable flyable = AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
+                    Integer.parseInt(line.split(" ")[2]), Integer.parseInt(line.split(" ")[3]),
+                    Integer.parseInt(line.split(" ")[4]));
                     
                     if (flyable != null)
+                    {
                         flyables.add(flyable);
                     }
-                    for (Flyable flyable : flyables) {
-                        flyable.registerTower(weatherTower);
-                    }
-                    for (int i = 1; i <= simulations; i++) {
-                        weatherTower.changeWeather();*/
                 }
+                for (Flyable flyable : flyables) {
+                    flyable.registerTower(weatherTower);
+                }
+                /*for (int i = 1; i <= simulations; i++) {
+                    System.out.println(weatherTower.getWeather());
+                }*/
             }
         }
         catch (FileNotFoundException e) {
