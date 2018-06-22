@@ -5,8 +5,14 @@ import simulation.weather.*;
 
 public class WeatherTower extends Tower
 {
-    /*public String getWeather() {
-        WeatherProvider weatherProvider;
-        //return (WeatherProvider.getProvider().getCurrentWeather());
-    }*/
+    public String getWeather(Coordinates coordinates) 
+    {
+        String weather = WeatherProvider.getProvider().getCurrentWeather(coordinates);
+        return weather;
+    }
+
+    protected void changeWeather() 
+    {
+        this.conditionsChanged();     
+    }
 }

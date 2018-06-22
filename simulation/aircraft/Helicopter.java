@@ -1,26 +1,45 @@
 package simulation.aircraft;
 
+import javax.lang.model.util.ElementScanner6;
+
 import simulation.aircraft.*;
 import simulation.weather.*;
 
 public class Helicopter extends Aircraft implements Flyable
 {
-    private WeatherTower weatherTower;
+    private WeatherTower NweatherTower;
 
     Helicopter(String name, Coordinates coordinates) 
     {
         super(name, coordinates);
-        System.out.println("new heli: " + name);
     }
 
-    /*public void updateConditions() 
+    public void updateConditions() 
     {
-        String weather = weatherTower.getWeather();
-        System.out.println(weather);
-    }*/
+        String weather = this.NweatherTower.getWeather(this.coordinates);
+        if (weather == "RAIN")
+        {
+            System.out.println("HELICOPTER SAYS: its rainy");
+        }
+        else if (weather == "SNOW")
+        {
+            System.out.println("HELICOPTER SAYS: its snowy");
+        }
+        else if (weather == "FOG")
+        {
+            System.out.println("HELICOPTER SAYS: its foggy");
+        }
+        else if (weather == "SUN")
+        {
+            System.out.println("HELICOPTER SAYS: its sunny");
+        }
+        else
+            System.out.println("unknown weather: ");
+    }
 
     public void registerTower(WeatherTower weatherTower) 
     {
+        this.NweatherTower = weatherTower;
         weatherTower.register(this);
     }
 }

@@ -7,23 +7,24 @@ import simulation.weather.*;
 
 public class WeatherProvider
 {
-    private WeatherProvider weatherProvider = null;
-    private String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
+    private static WeatherProvider weatherProvider = null;
+    private static String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
     
     private WeatherProvider(){}
 
-    public WeatherProvider getProvider() 
+    public static WeatherProvider getProvider() 
     {
-        weatherProvider = new WeatherProvider();
+        if (weatherProvider == null)
+            weatherProvider = new WeatherProvider();
         return (weatherProvider);    
     }
 
-    public String getCurrentWeather() 
+    public String getCurrentWeather(Coordinates coordinates) 
     {
         Random randWeather = new Random();
 
-        int nWeather = randWeather.nextInt(4);
-        //System.out.println(weather[nWeather]);
+        int nWeather = 0; 
+        nWeather = randWeather.nextInt(4);
         return (weather[nWeather]);
     }
 }

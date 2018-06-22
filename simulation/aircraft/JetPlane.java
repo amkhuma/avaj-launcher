@@ -5,21 +5,22 @@ import simulation.weather.*;
  
 public class JetPlane extends Aircraft implements Flyable
 {
-    //private WeatherTower weatherTower;
+    private WeatherTower NweatherTower;
 
     JetPlane(String name, Coordinates coordinates) 
     {
         super(name, coordinates);
-        System.out.println("new jet: " + name);
     }
 
     public void updateConditions() 
     {
-        
+        String weather = this.NweatherTower.getWeather(this.coordinates);
+        System.out.println(weather);
     }
 
     public void registerTower(WeatherTower weatherTower) 
     {
+        this.NweatherTower = weatherTower;
         weatherTower.register(this);
     }
 }

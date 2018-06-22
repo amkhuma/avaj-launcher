@@ -6,12 +6,16 @@ import java.util.*;
 import simulation.aircraft.*;
 import simulation.weather.*;
 
+
+
+        
 public class Simulation
 {
+    private static WeatherTower weatherTower;
+    private static List<Flyable> flyables = new ArrayList<Flyable>();
     public static void main(String args[])
     {
-        final WeatherTower weatherTower;
-	    List<Flyable> flyables = new ArrayList<Flyable>();
+        
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
@@ -41,9 +45,9 @@ public class Simulation
                 for (Flyable flyable : flyables) {
                     flyable.registerTower(weatherTower);
                 }
-                /*for (int i = 1; i <= simulations; i++) {
-                    System.out.println(weatherTower.getWeather());
-                }*/
+                for (int i = 1; i <= simulations; i++) {
+                    weatherTower.changeWeather();
+                }
             }
         }
         catch (FileNotFoundException e) {
