@@ -5,10 +5,7 @@ import java.lang.*;
 import java.util.*;
 import simulation.aircraft.*;
 import simulation.weather.*;
-
-
-
-        
+   
 public class Simulation
 {
     private static WeatherTower weatherTower;

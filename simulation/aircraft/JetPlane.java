@@ -20,6 +20,7 @@ public class JetPlane extends Aircraft implements Flyable
 
     public void registerTower(WeatherTower weatherTower) 
     {
+        System.out.println("Tower says: " + "JetPlane#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
         this.NweatherTower = weatherTower;
         weatherTower.register(this);
     }
