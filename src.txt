@@ -5,7 +5,7 @@
 ./simulation/aircraft/Flyable.java
 ./simulation/aircraft/Helicopter.java
 ./simulation/aircraft/JetPlane.java
-./simulation/weather/Simulation.java
+./simulation/weather/Main.java
 ./simulation/weather/Tower.java
 ./simulation/weather/WeatherProvider.java
 ./simulation/weather/WeatherTower.java

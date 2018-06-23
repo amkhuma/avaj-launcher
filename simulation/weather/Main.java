@@ -6,7 +6,7 @@ import java.util.*;
 import simulation.aircraft.*;
 import simulation.weather.*;
    
-public class Simulation
+public class Main
 {
     private static WeatherTower weatherTower;
     private static List<Flyable> flyables = new ArrayList<Flyable>();
@@ -43,6 +43,7 @@ public class Simulation
                     flyable.registerTower(weatherTower);
                 }
                 for (int i = 1; i <= simulations; i++) {
+                    System.out.println("simulation: " + i);
                     weatherTower.changeWeather();
                 }
             }

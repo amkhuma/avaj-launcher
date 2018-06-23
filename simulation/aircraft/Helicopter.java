@@ -16,25 +16,36 @@ public class Helicopter extends Aircraft implements Flyable
 
     public void updateConditions() 
     {
+        int copyHeight = this.coordinates.getHeight();
+        int copyLong = this.coordinates.getLongitude(); 
+        int copyLat = this.coordinates.getLatitude();
         String weather = this.NweatherTower.getWeather(this.coordinates);
-        if (weather == "RAIN")
-        {
-            System.out.println("HELICOPTER SAYS: its rainy");
+        switch (weather) {
+            case "RAIN":
+                this.coordinates = new Coordinates(copyLong + 5, copyLat, copyHeight);
+                //System.out.println("Helicopter#" + this.name + "(" + this.id + "): its rainy");
+                break;
+            case "SNOW":
+                this.coordinates = new Coordinates(copyLong, copyLat, copyHeight - 12);
+                System.out.println("Helicopter#" + this.name + "(" + this.id + "): its snowy");
+                break;
+            case "FOG":
+                this.coordinates = new Coordinates(copyLong + 1, copyLat, copyHeight);
+                System.out.println("Helicopter#" + this.name + "(" + this.id + "): its foggy");
+                break;
+            case "SUN":
+                this.coordinates = new Coordinates(copyLong + 10, copyLat, copyHeight + 2);
+                System.out.println("Helicopter#" + this.name + "(" + this.id + "): its sunny");
+                break;            
+            default:
+                System.out.println("unknown weather: ");
+                break;
         }
-        else if (weather == "SNOW")
+        //System.out.println("long: " + copyLong + " lat: " + copyLat + " height: " + copyHeight);
+        if (this.coordinates.getHeight() <= 0)
         {
-            System.out.println("HELICOPTER SAYS: its snowy");
+            unregisterTower(this.NweatherTower);            
         }
-        else if (weather == "FOG")
-        {
-            System.out.println("HELICOPTER SAYS: its foggy");
-        }
-        else if (weather == "SUN")
-        {
-            System.out.println("HELICOPTER SAYS: its sunny");
-        }
-        else
-            System.out.println("unknown weather: ");
     }
 
     public void registerTower(WeatherTower weatherTower) 
@@ -42,5 +53,12 @@ public class Helicopter extends Aircraft implements Flyable
         System.out.println("Tower says: " + "Helicopter#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
         this.NweatherTower = weatherTower;
         weatherTower.register(this);
+    }
+
+    public void unregisterTower(WeatherTower weatherTower) 
+    {
+        System.out.println("Tower says: " + "Helicopter#" + this.name + "(" + this.id + ")" + " unregisteres from weather tower.");
+        this.NweatherTower = weatherTower;
+        weatherTower.unregister(this);
     }
 }

@@ -13,7 +13,12 @@ public class Coordinates
     {
         this.longitude = longitude;
         this.latitude = latitude;
-        this.height = height;
+        if (height > 100)
+        {
+            this.height = 100;
+        }
+        else
+            this.height = height;
     }
 
     public int getLongitude()
@@ -29,5 +34,35 @@ public class Coordinates
     public int getHeight()
     {
         return (this.height);
+    }
+
+    public void increaseHeight(int newHeight) 
+    {
+        this.height = this.height + newHeight;
+    }
+
+    public void increaseLatitude(int newLatitude) 
+    {
+        this.latitude = this.latitude + newLatitude;
+    }
+
+    public void increaseLongitude(int newLongitude) 
+    {
+        this.longitude = this.longitude + newLongitude;
+    }
+
+    public void decreaseHeight(int newHeight) 
+    {
+        this.height = this.height - newHeight;
+    }
+
+    public void decreaseLatitude(int newLatitude) 
+    {
+        this.latitude = this.latitude - newLatitude;
+    }
+
+    public void decreaseLongitude(int newLongitude) 
+    {
+        this.longitude = this.longitude - newLongitude;
     }
 }

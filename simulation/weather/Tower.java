@@ -8,7 +8,7 @@ import simulation.weather.*;
 public class Tower
 {
     private List<Flyable> observers = new ArrayList<Flyable>();
-    //private List<Flyable> landed = new ArrayList<Flyable>();
+    private List<Flyable> unregistered = new ArrayList<Flyable>();
 
     public void register(Flyable flyable) 
     {
@@ -19,19 +19,22 @@ public class Tower
         //System.out.println(flyable);
     }
 
-    private void unregister(Flyable flyable) 
+    public void unregister(Flyable flyable) 
     {
-        
+        if (unregistered.contains(flyable))
+        {
+            return ;
+        }
+        unregistered.add(flyable);
     }
 
     protected void conditionsChanged() 
     {
-        int i = 1;
         for (Flyable flyable : observers) {
 			flyable.updateConditions();
 			/*if(flyable.getCoordinates().getHeight() <= 0)
 				landed.add(flyable);*/
 		}
-		//observers.removeAll(landed);
+		observers.removeAll(unregistered);
     }
 }
