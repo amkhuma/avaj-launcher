@@ -5,6 +5,7 @@ import java.lang.*;
 import java.util.*;
 import simulation.aircraft.*;
 import simulation.weather.*;
+import simulation.writer.*;
    
 public class Main
 {
@@ -43,7 +44,7 @@ public class Main
                     flyable.registerTower(weatherTower);
                 }
                 for (int i = 1; i <= simulations; i++) {
-                    System.out.println("simulation: " + i);
+                    WriteToFile.getFile().writetofile("simulation: " + i);
                     weatherTower.changeWeather();
                 }
             }
@@ -58,6 +59,8 @@ public class Main
             System.out.println("value is null");
         } catch (NumberFormatException e) {
             System.out.println("not a valid number entered in file");
+        } finally {
+            WriteToFile.getFile().closeFile();
         }
     }
 }

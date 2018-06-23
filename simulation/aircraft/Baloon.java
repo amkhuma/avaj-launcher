@@ -2,6 +2,7 @@ package simulation.aircraft;
 
 import simulation.aircraft.*;
 import simulation.weather.*;
+import simulation.writer.*;
 
 public class Baloon extends Aircraft implements Flyable
 {
@@ -22,22 +23,22 @@ public class Baloon extends Aircraft implements Flyable
         {
             case "RAIN":
                 this.coordinates = new Coordinates(copyLong, copyLat, copyHeight - 5);
-                System.out.println("Baloon#" + this.name + "(" + this.id + "): its rainy");
+                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its rainy");
                 break;
             case "SNOW":
                 this.coordinates = new Coordinates(copyLong, copyLat, copyHeight - 15);
-                System.out.println("Baloon#" + this.name + "(" + this.id + "): its snowy");
+                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its snowy");
                 break;
             case "FOG":
                 this.coordinates = new Coordinates(copyLong, copyLat, copyHeight - 3);
-                System.out.println("Baloon#" + this.name + "(" + this.id + "): its foggy");
+                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its foggy");
                 break;
             case "SUN":
                 this.coordinates = new Coordinates(copyLong + 2, copyLat, copyHeight + 4);
-                System.out.println("Baloon#" + this.name + "(" + this.id + "): its sunny");
+                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its sunny");
                 break;            
             default:
-                System.out.println("unknown weather: ");
+            WriteToFile.getFile().writetofile("unknown weather: ");
                 break;
         }
         //System.out.println("long: " + copyLong + " lat: " + copyLat + " height: " + copyHeight);
@@ -49,14 +50,14 @@ public class Baloon extends Aircraft implements Flyable
 
     public void registerTower(WeatherTower weatherTower) 
     {
-        System.out.println("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
+        WriteToFile.getFile().writetofile("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
         this.NweatherTower = weatherTower;
         weatherTower.register(this);
     }
 
     public void unregisterTower(WeatherTower weatherTower) 
     {
-        System.out.println("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " unregisteres from weather tower.");
+        WriteToFile.getFile().writetofile("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " unregisteres from weather tower.");
         this.NweatherTower = weatherTower;
         weatherTower.unregister(this);
     }

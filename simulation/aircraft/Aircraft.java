@@ -2,6 +2,7 @@ package simulation.aircraft;
 
 import simulation.aircraft.*;
 import simulation.weather.*;
+import simulation.writer.*;
 
 public class Aircraft
 {
