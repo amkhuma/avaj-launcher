@@ -56,7 +56,7 @@ public class Baloon extends Aircraft implements Flyable
 
     public void unregisterTower(WeatherTower weatherTower) 
     {
-        System.out.println("Tower says: " + "Helicopter#" + this.name + "(" + this.id + ")" + " unregisteres from weather tower.");
+        System.out.println("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " unregisteres from weather tower.");
         this.NweatherTower = weatherTower;
         weatherTower.unregister(this);
     }

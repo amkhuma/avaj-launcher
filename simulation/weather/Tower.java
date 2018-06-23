@@ -32,8 +32,6 @@ public class Tower
     {
         for (Flyable flyable : observers) {
 			flyable.updateConditions();
-			/*if(flyable.getCoordinates().getHeight() <= 0)
-				landed.add(flyable);*/
 		}
 		observers.removeAll(unregistered);
     }

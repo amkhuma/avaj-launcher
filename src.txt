@@ -9,3 +9,4 @@
 ./simulation/weather/Tower.java
 ./simulation/weather/WeatherProvider.java
 ./simulation/weather/WeatherTower.java
+./simulation/writer/WriteToFile.java
