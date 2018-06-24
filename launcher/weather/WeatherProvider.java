@@ -1,9 +1,14 @@
-package simulation.weather;
+package launcher.weather;
 
 import java.util.*;
 
-import simulation.aircraft.*;
-import simulation.weather.*;
+import launcher.aircraft.*;
+import launcher.weather.*;
+
+
+/*
+    Simply provides the type of weather randomly selected between four choices.
+*/
 
 public class WeatherProvider
 {

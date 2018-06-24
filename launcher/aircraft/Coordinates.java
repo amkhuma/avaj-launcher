@@ -1,7 +1,13 @@
-package simulation.aircraft;
+package launcher.aircraft;
 
-import simulation.aircraft.*;
-import simulation.weather.*;
+import launcher.aircraft.*;
+import launcher.weather.*;
+import launcher.writer.*;
+
+/*
+    It would have been a tough job dealing with latitude, longitude and height separately for each flyable, this class nicely binds them together
+    so that we can have access to all three of them at the same time
+*/
 
 public class Coordinates
 {

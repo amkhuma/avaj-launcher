@@ -1,8 +1,8 @@
-package simulation.aircraft;
+package launcher.aircraft;
 
-import simulation.aircraft.*;
-import simulation.weather.*;
-import simulation.writer.*;
+import launcher.aircraft.*;
+import launcher.weather.*;
+import launcher.writer.*;
 
 public class Baloon extends Aircraft implements Flyable
 {
@@ -23,25 +23,24 @@ public class Baloon extends Aircraft implements Flyable
         {
             case "RAIN":
                 this.coordinates = new Coordinates(copyLong, copyLat, copyHeight - 5);
-                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its rainy");
+                writr.writetofile("Baloon#" + this.name + "(" + this.id + "): Ahhh, it has been long since I had a good wash, pour on me thou Rain!");
                 break;
             case "SNOW":
                 this.coordinates = new Coordinates(copyLong, copyLat, copyHeight - 15);
-                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its snowy");
+                writr.writetofile("Baloon#" + this.name + "(" + this.id + "): Oh my fucken God can it stop snowing already!");
                 break;
             case "FOG":
                 this.coordinates = new Coordinates(copyLong, copyLat, copyHeight - 3);
-                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its foggy");
+                writr.writetofile("Baloon#" + this.name + "(" + this.id + "): I can't see, I can't see..Oh my a Crash is coming! Damn you Fog.");
                 break;
             case "SUN":
                 this.coordinates = new Coordinates(copyLong + 2, copyLat, copyHeight + 4);
-                WriteToFile.getFile().writetofile("Baloon#" + this.name + "(" + this.id + "): its sunny");
+                writr.writetofile("Baloon#" + this.name + "(" + this.id + "): Finally some Sun, Ulra violets bouncing on me. :)");
                 break;            
             default:
-            WriteToFile.getFile().writetofile("unknown weather: ");
+            writr.writetofile("unknown weather: ");
                 break;
         }
-        //System.out.println("long: " + copyLong + " lat: " + copyLat + " height: " + copyHeight);
         if (this.coordinates.getHeight() <= 0)
         {
             unregisterTower(this.NweatherTower);            
@@ -50,14 +49,14 @@ public class Baloon extends Aircraft implements Flyable
 
     public void registerTower(WeatherTower weatherTower) 
     {
-        WriteToFile.getFile().writetofile("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
+        writr.writetofile("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
         this.NweatherTower = weatherTower;
         weatherTower.register(this);
     }
 
     public void unregisterTower(WeatherTower weatherTower) 
     {
-        WriteToFile.getFile().writetofile("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " unregisteres from weather tower.");
+        writr.writetofile("Tower says: " + "Baloon#" + this.name + "(" + this.id + ")" + " unregisteres from weather tower and lands.");
         this.NweatherTower = weatherTower;
         weatherTower.unregister(this);
     }

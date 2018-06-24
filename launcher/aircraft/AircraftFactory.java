@@ -1,7 +1,12 @@
-package simulation.aircraft;
+package launcher.aircraft;
 
-import simulation.aircraft.*;
-import simulation.weather.*;
+import launcher.aircraft.*;
+import launcher.weather.*;
+import launcher.writer.*;
+
+/*
+	the name itself shows that this is where a flyable is created and all the necessary details are passed
+*/
 
 public class AircraftFactory 
 {
